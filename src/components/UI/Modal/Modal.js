@@ -1,19 +1,22 @@
-import { checkPropTypes } from 'prop-types';
 import React from 'react';
 import classes from './Modal.module.css';
+import Aux from '../../../hoc/Aux';
+import BackDrop from '../BackDrop/BackDrop';
 
 
 const modal = (props) => {
     return (
-        <div 
-        className={classes.Modal}
-        style={{
+        <Aux>
+            <BackDrop show={props.show} clicked={props.modalclosed} />
+            <div 
+            className={classes.Modal}
+            style={{
             transform: props.show? 'translateY(0)': 'translateY(-100vh)',
             opacity: props.show? '1': '0'
-        }}
-        >
+            }}>
             {props.children}
-        </div>
+            </div>
+        </Aux>
     );
 }
 
