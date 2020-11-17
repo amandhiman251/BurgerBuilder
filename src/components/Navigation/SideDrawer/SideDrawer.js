@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './SideDrawer.module.css';
 import Logo from '../../../components/Logo/Logo';
 import NavigationItem from '../Navigationitems/NavigationItem/NavigationItem';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/AUX/Aux';
 import BackDrop from '../../UI/BackDrop/BackDrop';
 import { checkPropTypes } from 'prop-types';
 
