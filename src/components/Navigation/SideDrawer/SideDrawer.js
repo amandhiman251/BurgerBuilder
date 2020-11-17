@@ -6,7 +6,9 @@ import NavigationItem from '../Navigationitems/NavigationItem/NavigationItem';
 const sideDrawer = () => {
     return (
         <div className={classes.SideDrawer}>
-            <Logo />
+            <div className={classes.Logo}>
+                <Logo />
+            </div>
             <nav>
                 <NavigationItem>BurgerBuilder</NavigationItem>
                 <NavigationItem>Checkout</NavigationItem>
