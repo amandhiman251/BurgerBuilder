@@ -11,10 +11,10 @@ class App extends Component {
         return (
             <div>
             <Layout>
-                <Switch>
+                 <Switch>
                     <Route path='/checkout' component={Checkout} />
                     <Route path='/' component={BurgerBuilder} />
-                </Switch>
+                 </Switch>
             </Layout>
             </div>
         );
