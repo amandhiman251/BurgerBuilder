@@ -1,12 +1,22 @@
-import { checkPropTypes } from 'prop-types';
 import React from 'react';
 import classes from './NavigationItem.module.css';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-const navigationItem = (props) => (
-    <li className={classes.NavigationItem}>
-        <a className={props.active ? classes.active : null} href ={props.link}>
-            {props.children}
-        </a>
-    </li>
-);
-export default navigationItem;
+const navigationItem = (props) =>{
+    console.log(props);
+    let abc = null;
+    if(props.location.pathname===props.link){
+        abc = classes.active;
+    }
+    return(
+        <li className={classes.NavigationItem}>
+           <Link className={abc} to ={props.link}>
+               {props.children}
+           </Link>
+       </li>
+   );}
+    
+export default withRouter(navigationItem);
+
+
