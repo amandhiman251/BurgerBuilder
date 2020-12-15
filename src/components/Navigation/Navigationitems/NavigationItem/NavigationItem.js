@@ -8,9 +8,12 @@ const navigationItem = (props) =>{
     if(props.location.pathname===props.link){
         abc = classes.active;
     }
+    
+    const a = props.link;
+    console.log(props.link);
     return(
         <li className={classes.NavigationItem}>
-           <Link className={abc} to ={props.link}>
+           <Link className={abc} to={a}>
                {props.children}
            </Link>
        </li>
