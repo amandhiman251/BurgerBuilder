@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 const navigationItem = (props) =>{
-    console.log(props);
     let abc = null;
     if(props.location.pathname===props.link){
         abc = classes.active;
