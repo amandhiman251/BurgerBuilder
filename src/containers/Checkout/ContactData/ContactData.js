@@ -16,7 +16,7 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'Your Name'
                     },
-                    value=''
+                    value:''
                 },
                 street: {
                     elementType: 'input',
@@ -24,7 +24,7 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'street'
                     },
-                    value=''
+                    value:''
                 },
                 zipcode: {
                     elementType: 'input',
@@ -32,7 +32,7 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'ZIP Code'
                     },
-                    value=''
+                    value:''
                 },
                 country: {
                     elementType: 'input',
@@ -40,7 +40,7 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'Country'
                     },
-                    value=''
+                    value:''
                 },
                 email: {
                     elementType: 'input',
@@ -48,7 +48,7 @@ class ContactData extends Component {
                         type: 'email',
                         placeholder: 'Your E-mail'
                     },
-                    value=''
+                    value:''
                 },
                 deliveryMethod: {
                     elementType: 'select',
@@ -58,7 +58,7 @@ class ContactData extends Component {
                             {value: 'cheapest', displayValue: 'Cheapest'}
                         ]
                     },
-                    value='fastest'
+                    value:'fastest'
                 },
             },
             loading: false
@@ -70,16 +70,6 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-            customer: {
-                name: 'Aman Dhiman',
-                address: {
-                    street: 'teststreet',
-                    zipcode: '133201',
-                    country: 'India'
-                },
-                email: 'amandhiman251@gmail.com'
-            },
-            deliveryMethod: 'fastest'
         }
         axios.post('orders.json', order)
         .then(response => {
@@ -91,13 +81,24 @@ class ContactData extends Component {
     }
 
     render(){
-        
+
+        const formElementArray=[];
+        for(let key in this.state.orderForm){
+            formElementArray.push({
+                id:key,
+                config:this.state.orderForm[key]
+                });
+        }
         let form =(
             <form>
-                    <Input inputtype="input" type='text' name ='name' placeholder = 'Your Name' />
-                    <Input inputtype="input" type='email' name ='email' placeholder = 'Your email' />
-                    <Input inputtype="input" type='text' name ='street' placeholder = 'street' />
-                    <Input inputtype="input" type='text' name ='postalcode' placeholder = 'postalcode' />
+                    {formElementArray.map(formElement=>(
+                        <Input 
+                            key={formElement.id}
+                            elementType ={formElement.config.elementType}
+                            elementConfig={formElement.config.elementConfig}
+                            value={formElement.config.value} />
+
+                    ))}
                     <Button btntype="Success"clicked= {this.orderHandler}>ORDER</Button>
                 </form>
         );

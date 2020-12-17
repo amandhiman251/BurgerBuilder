@@ -11,19 +11,19 @@ const input =(props)=> {
             inputElement= <input 
             className={classes.InputElement}
             {...props.elementConfig} 
-            value={props.value} />;
+            defaultValue={props.value} />;
             break;
-        case ('textarea'):
-            inputElement= <textarea 
+        case ('select'):
+            inputElement= <select 
             className={classes.InputElement} 
             {...props.elementConfig} 
-            value={props.value} />;
+            defaultValue={props.value} />;
             break;
         default:
             inputElement= <input 
             className={classes.InputElement} 
             {...props.elementConfig} 
-            value={props.value} />;
+            defaultValue={props.value} />;
     }
     return(
         <div className={classes.Input}>

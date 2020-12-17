@@ -18,6 +18,7 @@ Label{
     padding: 6px 10px;
     display: block;
     width: 80%;
+    margin: auto;
     box-sizing: border-box;
 }
 
