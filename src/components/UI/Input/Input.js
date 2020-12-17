@@ -14,10 +14,16 @@ const input =(props)=> {
             defaultValue={props.value} />;
             break;
         case ('select'):
-            inputElement= <select 
+            inputElement= (<select 
             className={classes.InputElement} 
-            {...props.elementConfig} 
-            defaultValue={props.value} />;
+            defaultValue={props.value}>
+            {props.elementConfig.option.map(
+                abc => (
+                    <option key ={abc.value} value ={abc.value}>
+                        {abc.displayValue}
+                    </option>
+                ))}
+                </select> );
             break;
         default:
             inputElement= <input 
