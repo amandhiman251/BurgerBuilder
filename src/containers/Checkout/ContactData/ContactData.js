@@ -16,7 +16,11 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'Your Name'
                     },
-                    value:''
+                    value:'',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
                 street: {
                     elementType: 'input',
@@ -24,7 +28,11 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'street'
                     },
-                    value:''
+                    value:'',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
                 zipcode: {
                     elementType: 'input',
@@ -32,7 +40,13 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'ZIP Code'
                     },
-                    value:''
+                    value:'',
+                    validation: {
+                        required: true,
+                        minLength: 5,
+                        maxLength: 5
+                    },
+                    valid: false
                 },
                 country: {
                     elementType: 'input',
@@ -40,7 +54,11 @@ class ContactData extends Component {
                         type: 'text',
                         placeholder: 'Country'
                     },
-                    value:''
+                    value:'',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
                 email: {
                     elementType: 'input',
@@ -48,7 +66,11 @@ class ContactData extends Component {
                         type: 'email',
                         placeholder: 'Your E-mail'
                     },
-                    value:''
+                    value:'',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
                 deliveryMethod: {
                     elementType: 'select',
@@ -89,13 +111,29 @@ class ContactData extends Component {
         const updatedOrderForm = {
             ...this.state.orderForm
         };
-        const updatedOrderFormElement ={
+        const updatedFormElement ={
             ...updatedOrderForm[inputIdentifier]
         };
-        updatedOrderFormElement.value= event.target.value;
-        updatedOrderForm[inputIdentifier]= updatedOrderFormElement;
+        updatedFormElement.value= event.target.value;
+        updatedOrderForm[inputIdentifier]= updatedFormElement;
+        updatedFormElement.valid= this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        console.log(updatedFormElement);
         this.setState({ orderForm: updatedOrderForm});
     } 
+
+    checkValidity = (value,rules) => {
+        let isValid= true;
+        if (rules.required){
+            isValid= value.trim() !== '' && isValid;
+        }
+        if (rules.minLength){
+            isValid =  value.length >= rules.minLength && isValid;
+        }
+        if (rules.maxLength){
+            isValid =  value.length <= rules.maxLength && isValid;
+        }
+        return isValid;
+    }
 
     render(){
 
