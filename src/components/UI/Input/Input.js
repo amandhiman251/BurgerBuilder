@@ -10,12 +10,14 @@ const input =(props)=> {
         case ('input'):
             inputElement= <input 
             className={classes.InputElement}
+            onChange={props.changed}
             {...props.elementConfig} 
             defaultValue={props.value} />;
             break;
         case ('select'):
             inputElement= (<select 
-            className={classes.InputElement} 
+            className={classes.InputElement}
+            onChange={props.changed} 
             defaultValue={props.value}>
             {props.elementConfig.option.map(
                 abc => (
@@ -27,7 +29,8 @@ const input =(props)=> {
             break;
         default:
             inputElement= <input 
-            className={classes.InputElement} 
+            className={classes.InputElement}
+            onChange={props.changed} 
             {...props.elementConfig} 
             defaultValue={props.value} />;
     }
