@@ -25,7 +25,7 @@ class BurgerBuilder extends Component {
         error: false
     }
     componentDidMount(){
-        axios.get('https://my-burger-react-3a887.firebaseio.com/ingredients.json')
+        axios.get('https://burgerbuilder-3ac9b-default-rtdb.firebaseio.com/ingredients.json')
         .then(response => {
             this.setState({ingredients: response.data});
         }).catch(error => {
@@ -133,3 +133,6 @@ class BurgerBuilder extends Component {
 }
 
 export default withErrorHandler(BurgerBuilder, axios);
+
+
+//https://my-burger-react-3a887.firebaseio.com/ingredients.json'

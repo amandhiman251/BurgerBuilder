@@ -4,19 +4,26 @@ import classes from './Input.module.css';
 
 const input =(props)=> {
 
+    let inputClasses=[classes.InputElement];
+
+    if(props.invalid){
+        inputClasses.push(classes.Invalid);
+    }
+
     let inputElement = null;
 
     switch(props.elementType){
         case ('input'):
             inputElement= <input 
-            className={classes.InputElement}
+            className={inputClasses.join(' ')}
             onChange={props.changed}
+            invalid={props.invalid}
             {...props.elementConfig} 
             defaultValue={props.value} />;
             break;
         case ('select'):
             inputElement= (<select 
-            className={classes.InputElement}
+            className={inputClasses.join(' ')}
             onChange={props.changed} 
             defaultValue={props.value}>
             {props.elementConfig.option.map(
@@ -29,7 +36,7 @@ const input =(props)=> {
             break;
         default:
             inputElement= <input 
-            className={classes.InputElement}
+            className={inputClasses.join(' ')}
             onChange={props.changed} 
             {...props.elementConfig} 
             defaultValue={props.value} />;
