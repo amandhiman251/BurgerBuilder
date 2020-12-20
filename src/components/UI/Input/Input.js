@@ -5,10 +5,10 @@ import classes from './Input.module.css';
 const input =(props)=> {
 
     let inputClasses=[classes.InputElement];
-
-    if(props.invalid){
+    if(props.invalid && props.touched){
         inputClasses.push(classes.Invalid);
     }
+
 
     let inputElement = null;
 

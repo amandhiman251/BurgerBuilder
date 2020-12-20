@@ -7,4 +7,4 @@ const instance = axios.create({
 export default instance;
 
 
-'https://my-burger-react-3a887.firebaseio.com/'
+//'https://my-burger-react-3a887.firebaseio.com/'
