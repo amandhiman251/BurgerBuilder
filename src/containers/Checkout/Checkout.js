@@ -20,7 +20,7 @@ class Checkout extends Component {
             } else {
                 ingredients[param[0]] = +param[1]; 
             }
-            console.log(ingredients);
+            //console.log(ingredients);
         };
         this.setState({
             ingredients:ingredients,

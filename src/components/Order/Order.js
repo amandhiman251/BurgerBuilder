@@ -17,7 +17,7 @@ const order = (props) => {
     const ingOutput = ingredients.map(ig => {
         return <span key={ig.Name}> {ig.Name} ({ig.quantity}) </span>;
     })
-    console.log(ingredients);
+    //console.log(ingredients);
 
     return(
         <div className ={classes.Order}>
