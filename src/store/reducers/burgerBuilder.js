@@ -1,4 +1,4 @@
-import * as actionType from './actions';
+import * as actionTypes from '../actions/actionTypes';
 
 
 const INGREDIENTS_PRICE = {
@@ -20,7 +20,7 @@ const initialState = {
 
 const reducer = (state=initialState, action) => {
     switch (action.type) {
-        case actionType.ADD_INGREDIENTS:
+        case actionTypes.ADD_INGREDIENTS:
            return{
                     ...state,
                         ingredients:{
@@ -29,7 +29,7 @@ const reducer = (state=initialState, action) => {
                     },
                     finalPrice: state.finalPrice + INGREDIENTS_PRICE[action.ingredient]
             }
-        case actionType.REMOVE_INGREDIENTS:
+        case actionTypes.REMOVE_INGREDIENTS:
             return{
                     ...state,
                         ingredients:{
@@ -41,7 +41,6 @@ const reducer = (state=initialState, action) => {
         default:
             return state;
     }
-    return state
 }
 
 export default reducer;
