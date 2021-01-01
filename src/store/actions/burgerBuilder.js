@@ -9,7 +9,7 @@ export const addIngredient = (ing) => {
 
 export const removeIngredient = (ing) => {
     return{
-        type: actionTypes.REMOVE_INGREDIENTS,
+        type: actionTypes.ADD_INGREDIENTS,
         ingredient:ing
     }    
 }
