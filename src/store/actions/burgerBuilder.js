@@ -10,7 +10,7 @@ export const addIngredient = (ing) => {
 
 export const removeIngredient = (ing) => {
     return{
-        type: actionTypes.ADD_INGREDIENTS,
+        type: actionTypes.REMOVE_INGREDIENTS,
         ingredient:ing
     }    
 }
@@ -30,7 +30,7 @@ export const fetchIngredientsFail = () => {
 
 export const initIngredients = () => {
     return dispatch => {
-                axios.get('ingredients')
+                axios.get('ingredients.json')
                 .then(response => {
                     dispatch(setIngredients(response.data));
                 }).catch(error => {
