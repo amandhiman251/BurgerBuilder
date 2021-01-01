@@ -9,13 +9,9 @@ const INGREDIENTS_PRICE = {
 };
 
 const initialState = {
-    ingredients:{
-        salad: 0,
-        bacon: 0,
-        cheese: 0,
-        meat: 0
-    },
-    finalPrice: 4
+    ingredients:null,
+    finalPrice: 4,
+    error: false
 }
 
 const reducer = (state=initialState, action) => {
@@ -38,6 +34,17 @@ const reducer = (state=initialState, action) => {
                          },
                          finalPrice: state.finalPrice - INGREDIENTS_PRICE[action.ingredient]
                  }
+        case actionTypes.SET_INGREDIENTS:
+            return{
+                    ...state,
+                    ingredients:action.ingredients,
+                    error:false
+            }
+        case actionTypes.FETCH_INGREDIENTS_FAIL:
+            return{
+                    ...state,
+                    error: true
+                }
         default:
             return state;
     }

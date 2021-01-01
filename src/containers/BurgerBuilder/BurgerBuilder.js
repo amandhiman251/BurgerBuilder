@@ -13,18 +13,18 @@ import * as burgerBuilderActions from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
     state = {
-        purchasing: false,
-        loading: false,
-        error: false
+        purchasing: false
+        
     }
-    // componentDidMount(){
+    componentDidMount(){
+    this.props.onInitIngredients();
     //     axios.get('https://burgerbuilder-3ac9b-default-rtdb.firebaseio.com/ingredients.json')
     //     .then(response => {
     //         this.setState({ingredients: response.data});
     //     }).catch(error => {
     //         this.setState({error: true});
     //     });
-    // }
+     }
     orderButtonHandler = (ingredients) => {
         const sum = Object.keys(ingredients)
         .map( igkey => {
@@ -52,7 +52,7 @@ class BurgerBuilder extends Component {
             disabledbtn[ingd]= disabledbtn[ingd]<=0
         }
         let orderSummary = null;
-        let burger = this.state.error? <p>Something Went Wrong!!</p>:<Spinner />
+        let burger = this.props.error? <p>Something Went Wrong!!</p>:<Spinner />
         if(this.props.ings){
             burger = (
                 <Aux>
@@ -71,9 +71,6 @@ class BurgerBuilder extends Component {
                 continue={this.continueHandler}
                 price={this.props.price} />
         }
-        if(this.state.loading){
-            let orderSummary = <Spinner />
-        }
 
         return(
             <Aux>
@@ -89,14 +86,16 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.finalPrice
+        price: state.finalPrice,
+        error:state.error
     };
 }
 
 const mapDispatchToProps = dispatch =>{
     return {
         onAddIngredients: (ing) => dispatch(burgerBuilderActions.addIngredient(ing)),
-        onRemoveIngredients: (ing) => dispatch(burgerBuilderActions.removeIngredient(ing))
+        onRemoveIngredients: (ing) => dispatch(burgerBuilderActions.removeIngredient(ing)),
+        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
     };
 }
 
