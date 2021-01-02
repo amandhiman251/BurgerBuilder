@@ -7,5 +7,5 @@ export {
 } from './burgerBuilder';
 
 export{
-    purchaseBurgerSuccess
+    purchaseBurgerStart
 } from './order';
