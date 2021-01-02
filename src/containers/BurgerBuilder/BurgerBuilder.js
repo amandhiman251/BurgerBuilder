@@ -18,12 +18,6 @@ class BurgerBuilder extends Component {
     }
     componentDidMount(){
     this.props.onInitIngredients();
-    //     axios.get('https://burgerbuilder-3ac9b-default-rtdb.firebaseio.com/ingredients.json')
-    //     .then(response => {
-    //         this.setState({ingredients: response.data});
-    //     }).catch(error => {
-    //         this.setState({error: true});
-    //     });
      }
     orderButtonHandler = (ingredients) => {
         const sum = Object.keys(ingredients)
